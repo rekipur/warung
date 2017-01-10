@@ -27,7 +27,7 @@ class Kategori_barangController extends Controller
                         'model'    => $kategori_barang,
                         'form_url' => route('kategori_barang.destroy', $kategori_barang->id),
                         'edit_url' => route('kategori_barang.edit', $kategori_barang->id),
-                        'confirm_message' => 'Yakin mau mengapus ' . $kategori_barang->nama_jabatan . '?'
+                        'confirm_message' => 'Yakin mau mengapus ' . $kategori_barang->nama . '?'
                         ]);
                 })->make(true);
         }
