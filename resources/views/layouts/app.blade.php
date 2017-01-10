@@ -170,10 +170,7 @@
             <ul class="nav navbar-nav float-xs-right">
 
                 <li class="nav-item ">
-                    <a class="nav-link"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="hidden-sm-down">Support</span></a>
+                    <a href="{{ url('/home') }}" class="nav-link"><i class="fa fa-home"></i> <span class="hidden-sm-down">Home</span></a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Account</span></a>
