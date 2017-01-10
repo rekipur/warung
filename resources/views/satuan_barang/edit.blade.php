@@ -7,14 +7,14 @@
 				<!--Panel-->
 			<div class="card">
 			    <div class="card-header info-color-dark white-text">
-			        Edit Kategori Barang
+			        Edit Satuan Barang
 			    </div>
 			    <div class="card-block">
 			        
-			        <p class="card-text"><i> Kategori barang bersifat UNIQUE yakni nama kategori tidak boleh sama </i></p>
+			        <p class="card-text"><i> Satuan barang bersifat UNIQUE yakni nama satuan tidak boleh sama </i></p>
 					<hr>
-					{!! Form::model($kategori_barang, ['url' => route('kategori_barang.update', $kategori_barang->id), 'method' => 'put']) !!}
-			        @include('kategori_barang._form')
+					{!! Form::model($satuan_barang, ['url' => route('satuan_barang.update', $satuan_barang->id), 'method' => 'put']) !!}
+			        @include('satuan_barang._form')
 			        {!! Form::close() !!}
 			        <br><br>
 			    </div>

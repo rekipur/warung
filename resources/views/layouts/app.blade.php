@@ -141,7 +141,7 @@
                             <ul>
                                 <li><a href="{{ route('kategori_barang.index') }}" class="waves-effect">Kategori Barang</a>
                                 </li>
-                                <li><a href="#" class="waves-effect">Satuan Barang</a>
+                                <li><a href="{{ route('satuan_barang.index') }}" class="waves-effect">Satuan Barang</a>
                                 </li>
                             </ul>
                         </div>
