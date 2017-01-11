@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/history-masuk', 'BarangController@history_masuk');
+
 Route::group(['middleware'=>'web'], function () {
 
 	Route::group(['middleware'=>['auth', 'role:admin']], function () {
