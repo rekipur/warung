@@ -24,6 +24,7 @@ Route::group(['middleware'=>'web'], function () {
 	Route::group(['middleware'=>['auth', 'role:admin']], function () {
 		Route::resource('kategori_barang', 'Kategori_barangController');
 		Route::resource('satuan_barang', 'SatuanController');
+		Route::resource('barang', 'BarangController');
 	});
 
 });

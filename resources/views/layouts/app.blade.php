@@ -14,9 +14,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('DataTables-1.10.13/media/css/jquery.dataTables.css') }}" rel="stylesheet">    
+
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/mdb.min.css') }}" rel="stylesheet">
 
+    <link href="{{ asset('css/selectize.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/selectize.bootstrap3.css') }}" rel="stylesheet">
 
 
     <!-- Scripts -->
@@ -126,16 +131,21 @@
                             </ul>
                         </div>
                     </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-comments"></i> Comments<i class="fa fa-angle-down rotate-icon"></i></a>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-th"></i> Gudang<i class="fa fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="#" class="waves-effect">Most commented posts</a>
+                                <li><a href="{{ route('barang.index') }}" class="waves-effect">Barang</a>
                                 </li>
-                                <li><a href="#" class="waves-effect">Write a comment</a>
+                                <li><a href="#" class="waves-effect">History Barang Masuk</a>
+                                </li>                                
+                                <li><a href="#" class="waves-effect">History Barang Keluar</a>
+                                </li>                                
+                                <li><a href="#" class="waves-effect">Laporan Barang</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    <hr style="background-color: gray">
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-gears"></i> Setting<i class="fa fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
@@ -210,6 +220,12 @@
 
     <script src="{{ asset('DataTables-1.10.13/media/js/jquery.dataTables.js') }}"></script>
 
+    <script src="{{ asset('DataTables-1.10.13/media/js/jquery.dataTables.js') }}"></script>
+
+    <script src="{{ asset('js/selectize.js') }}"></script>
+
+    <script src="{{ asset('js/custom.js') }}"></script>
+
     <script>
         // SideNav init
         $(".button-collapse").sideNav();
@@ -218,6 +234,7 @@
         var el = document.querySelector('.custom-scrollbar');
         Ps.initialize(el);
     </script>
+    
         @yield('scripts')
 </body>
 </html>
