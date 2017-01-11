@@ -59,17 +59,6 @@
             </li>
             <!--/. Logo -->
 
-            <!--Social-->
-            <li>
-                <ul class="social">
-                    <li><a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
-                    <li><a class="icons-sm ins-ic"><i class="fa fa-instagram"> </i></a></li>
-                    <li><a class="icons-sm gplus-ic"><i class="fa fa-google-plus"> </i></a></li>
-                    <li><a class="icons-sm"><i class="fa fa-snapchat-ghost"> </i></a></li>
-                </ul>
-            </li>
-            <!--/Social-->
-
             <!--Search Form-->
             <li>
                 <form class="search-form" role="search">
@@ -136,7 +125,7 @@
                             <ul>
                                 <li><a href="{{ route('barang.index') }}" class="waves-effect">Barang</a>
                                 </li>
-                                <li><a href="#" class="waves-effect">History Barang Masuk</a>
+                                <li><a href="{{ url('/history-masuk') }}" class="waves-effect">History Barang Masuk</a>
                                 </li>                                
                                 <li><a href="#" class="waves-effect">History Barang Keluar</a>
                                 </li>                                

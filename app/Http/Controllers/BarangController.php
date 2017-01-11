@@ -46,6 +46,26 @@ class BarangController extends Controller
             return view('barang.index')->with(compact('html'));
             }
 
+    public function history_masuk(Request $request,Builder $htmlBuilder)
+    {
+        //
+        if ($request->ajax()) {
+            # code...
+            $barangs = Barang::select(['id','kode_barang','nama_barang','created_at']);
+            return Datatables::of($barangs)->make(true);
+            }
+
+
+            $html = $htmlBuilder
+            ->addColumn(['data'=>'kode_barang', 'name'=>'kode_barang', 'title'=>'Kode'])
+            ->addColumn(['data'=>'nama_barang', 'name'=>'nama_barang', 'title'=>'Nama Barang'])
+            ->addColumn(['data'=>'created_at', 'name'=>'created_at', 'title'=>'Waktu Input']);
+
+            return view('barang.history-masuk')->with(compact('html'));
+            }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
