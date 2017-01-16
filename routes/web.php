@@ -27,6 +27,7 @@ Route::group(['middleware'=>'web'], function () {
 		Route::resource('kategori_barang', 'Kategori_barangController');
 		Route::resource('satuan_barang', 'SatuanController');
 		Route::resource('barang', 'BarangController');
+		Route::resource('penjualan', 'PenjualanController');
 	});
 
 });

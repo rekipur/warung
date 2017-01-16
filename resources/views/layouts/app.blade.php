@@ -171,8 +171,11 @@
                 <li class="nav-item ">
                     <a href="{{ url('/home') }}" class="nav-link"><i class="fa fa-home"></i> <span class="hidden-sm-down">Home</span></a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Account</span></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-circle"></i>Penjualan</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item" href="{{ route('penjualan.index') }}">Form Jual</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
@@ -192,7 +195,6 @@
 
     </header>
     <!--/Double Navigation-->
-
 
         @include('layouts._flash')
         @yield('content')
@@ -214,6 +216,8 @@
     <script src="{{ asset('js/selectize.js') }}"></script>
 
     <script src="{{ asset('js/custom.js') }}"></script>
+    
+    <script src="{{ asset('js/penjualan.js') }}"></script>
 
     <script>
         // SideNav init
