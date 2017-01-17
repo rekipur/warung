@@ -19,7 +19,7 @@ class CreatePenjualansTable extends Migration
             $table->string('pelanggan');
             $table->integer('id_barang');
             $table->string('jenis');
-            $table->integer('jumlah_beli');
+            $table->integer('jumlah_jual');
             $table->integer('jumlah_harga');
             $table->integer('jumlah_bayar');
             $table->integer('jumlah_belum_bayar')->nullable();

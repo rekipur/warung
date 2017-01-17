@@ -13,33 +13,17 @@
 				        <h4 class="card-title">Special title treatment</h4>
 				        <div class="row">
 				        	<div class="col-md-3">
-								<!--Dropdown danger-->
-								<div class="dropdown">
-
-								    <!--Trigger-->
-								    <button class="btn btn-success btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Jenis Penjualan</button>
-
-								    <!--Menu-->
-								    <div class="dropdown-menu dropdown-success" aria-labelledby="dropdownMenu2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-								        <a class="dropdown-item" href="#">Tunai</a>
-								        <a class="dropdown-item" href="#">Kredit</a>
-								    </div>
-								</div>
-								<!--/Dropdown danger-->
+								<select class="mdb-select colorful-select dropdown-success">
+								    <option value="" disabled selected>Jenis Penjualan</option>
+								    <option value="0">Tunai</option>
+								    <option value="1">Kredit</option>
+								</select>
 				        	</div>
 				        	<div class="col-md-5"></div>
-				        	<div class="col-md-4"></div>
-				        </div>
-				        
-				        <!-- form atas -->
-				          <div class="row">
-				          <div class="col-md-4"></div>
-				          <div class="col-md-5"></div>
-				          <div class="col-md-3">
-
-							<div class="md-form{{ $errors->has('faktur') ? 'has-error': '' }}">
+				        	<div class="col-md-4">
+				        	<div class="md-form{{ $errors->has('faktur') ? 'has-error': '' }}">
 								<i class="fa fa-tag prefix"></i>
-									{!! Form::text('faktur', null, ['class'=>'form-controll']) !!}
+									{!! Form::text('faktur', null, ['id'=>'faktur','class'=>'form-controll']) !!}
 									{!! Form::label('faktur', 'Nomor') !!}
 									{!! $errors->first('faktur', '<p class="help-block">:message</p>')  !!}
 							</div>
@@ -50,10 +34,8 @@
 									{!! Form::label('pembeli', 'Pembeli') !!}
 									{!! $errors->first('pembeli', '<p class="help-block">:message</p>')  !!}
 							</div>
-
-						  </div>
-						  </div>
-						<!-- end form atas -->
+				        	</div>
+				        </div>
 				        <hr>
 				        <div class="row">
 				        	<div class="col-md-7">
@@ -70,18 +52,18 @@
 									</div>
 				        		</div>
 				        		<div class="col-md-4">
-									<div class="md-form{{ $errors->has('jumlah_beli') ? 'has-error':'' }}">
-										{!! Form::number('jumlah_beli', null,[
-											'id'=>'jumlah_beli',
+									<div class="md-form{{ $errors->has('jumlah_jual') ? 'has-error':'' }}">
+										{!! Form::number('jumlah_jual', null,[
+											'id'=>'jumlah_jual',
 											'class'=>'form-control',
 											'min'=>1
 										]) !!}
-										{!! Form::label('jumlah_beli', 'Jumlah Beli') !!}
-										{!! $errors->first('jumlah_beli', '<p class="help-block">:message</p>') !!}
+										{!! Form::label('jumlah_jual', 'Jumlah Jual') !!}
+										{!! $errors->first('jumlah_jual', '<p class="help-block">:message</p>') !!}
 									</div>
 				        		</div>
 				        		<div class="col-md-4">
-				        			<button class="btn btn-sm btn-success" onclick="baris()" style="width: 95%; text-align: left;"><i class="fa fa-send-o" aria-hidden="true"></i>&nbsp;Tambah Penjualan</button><br><button class="btn btn-sm btn-danger" style="width: 95%;text-align: left;" onclick="hapus_baris()"><i class="fa fa-times" aria-hidden="true"></i>&nbsp;Hapus Baris Awal</button>
+				        			<button class="btn btn-sm btn-success btn-tambah" onclick="baris()"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tambah Penjualan</button>
 				        		</div>
 				        	</div>
 				        	<div class="table-responsive">
@@ -91,40 +73,67 @@
 								        <tr>
 								            <th>Nama Barang</th>
 								            <th>Harga Barang</th>
-								            <th>Jumlah Beli</th>
+								            <th>Jumlah Jual</th>
 								            <th>Total</th>
+								            <th>Aksi</th>
 								        </tr>
 								    </thead>
 								    <tbody>
 								        <tr>
-								            <td>Clara</td>
-								            <td>Ericson</td>
-								            <td>@claris</td>
-								            <td>Beckham</td>
+								            <td colspan="5" style="text-align: center;">~ ~ ~ ~ ~</td>
 								        </tr>
 								    </tbody>
 								</table>
 								<!-- end table -->
+
 				        	</div>
 				        	</div>
 				        	<div class="col-md-5">
 								<!--Panel-->
-								<button onclick="myFunction()">Try it</button>
-								<p id="demo"></p>
+								<input type="hidden" id="pivot" disabled="">
+								<input type="hidden" id="pivot_nama" disabled="">
 								<div class="card">
 								    <div class="card-header info-color-dark white-text">
-								        Featured
+								        -- Penjualan
 								    </div>
 								    <div class="card-block">
-								        <h4 class="card-title">Special title treatment</h4>
-								        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								        
+								        <div class="row">
+								        	<div class="col-md-6">Total Penjualan</div>
+								        	<div class="col-md-6">
+											{!! Form::number('jumlah_harga', $value=0,[
+												'id'=>'jumlah_harga',
+												'class'=>'form-control',
+												'min'=>1,
+												'readonly'=>'yes'
+											]) !!}
+								        	</div>
+								        </div>
+								        <div class="row">
+								        	<div class="col-md-6">Jumlah Bayar</div>
+								        	<div class="col-md-6">
+											{!! Form::number('jumlah_bayar', $value=0,[
+												'id'=>'jumlah_bayar',
+												'class'=>'form-control',
+												'min'=>1
+											]) !!}
+								        	</div>
+								        </div><hr>
+								        <div class="row">
+								        	<div class="col-md-6">Sisa</div>
+								        	<div class="col-md-6">
+											{!! Form::number('sisa', $value=0,[
+												'id'=>'sisa',
+												'class'=>'form-control',
+												'min'=>1,
+												'readonly'=>'yes'
+											]) !!}
+								        	</div>
+								        </div>
 								    </div>
 								</div>
 								<!--/.Panel-->
 				        	</div>
 				        </div>
-				        <a class="btn btn-default">Go somewhere</a>
 				    </div>
 				    <div class="card-footer text-muted default-color-dark white-text">
 				        <p>2 days ago</p>

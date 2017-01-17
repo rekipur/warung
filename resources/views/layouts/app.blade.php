@@ -30,15 +30,6 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <style>
-        body {
-            /*background: url("http://mdbootstrap.com/images/regular/nature/img%20(55).jpg")no-repeat center center fixed;*/
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
 </head>
 <body class="fixed-sn red-skin" style="padding-top: 7%;">
 
@@ -226,8 +217,50 @@
         // Custom scrollbar init
         var el = document.querySelector('.custom-scrollbar');
         Ps.initialize(el);
+
+
+        $("#id_barang").change(function(){
+
+            var barang = $('#id_barang').val();
+
+                   $.post('{{ url('/ajax') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    barang:barang },function(data){
+
+                          $('#pivot').val(data);
+                });
+
+                   $.post('{{ url('/ajax_nama') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    nama:barang },function(data){
+
+                          $('#pivot_nama').val(data);
+                });
+        }); 
+
+         // Material Select Initialization
+         $(document).ready(function() {
+            $('.mdb-select').material_select();
+          });
     </script>
-    
+    <script>
+        $(".btn-tambah").click(function(){
+
+            var barang = $('#id_barang').val();
+            var jumlah_jual = $('#jumlah_jual').val();
+            var faktur = $('#faktur').val();
+
+                   $.post('{{ url('/insert') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    barang:barang,jumlah_jual:jumlah_jual,faktur:faktur },function(data){
+                          $('#nama').val(data);
+
+                });
+        }); 
+    </script>
         @yield('scripts')
 </body>
 </html>

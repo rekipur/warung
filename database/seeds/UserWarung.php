@@ -29,7 +29,7 @@ class UserWarung extends Seeder
 
         //membuat Sample Admin
         $admin = new User();
-        $admin->name = ' Admin Tata Usaha';
+        $admin->name = ' Admin Warung';
         $admin->email = 'admin@gmail.com';
         $admin->password = bcrypt('rahasia');
         $admin->save();
@@ -37,7 +37,7 @@ class UserWarung extends Seeder
 
         //membuat Sample member
         $member = new User();
-        $member->name = ' Member Tata Usaha';
+        $member->name = ' Member Warung';
         $member->email = 'member@gmail.com';
         $member->password = bcrypt('rahasia');
         $member->save();

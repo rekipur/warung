@@ -110,9 +110,30 @@ class BarangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function ajax(Request $request)
     {
         //
+        if ($request->ajax()) {
+            # code...
+        
+        $id_barang = $request->barang;
+        $barang = Barang::find($id_barang);
+
+        return $barang->harga_barang;
+        }
+    }
+
+    public function ajax_nama(Request $request)
+    {
+        //
+        if ($request->ajax()) {
+            # code...
+        
+        $id_barang = $request->nama;
+        $barang = Barang::find($id_barang);
+
+        return $barang->nama_barang;
+        }
     }
 
     /**

@@ -21,6 +21,12 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/history-masuk', 'BarangController@history_masuk');
 
+Route::post('/ajax', 'BarangController@ajax');
+
+Route::post('/ajax_nama', 'BarangController@ajax_nama');
+
+Route::post('/insert', 'ChildjualController@store');
+
 Route::group(['middleware'=>'web'], function () {
 
 	Route::group(['middleware'=>['auth', 'role:admin']], function () {
