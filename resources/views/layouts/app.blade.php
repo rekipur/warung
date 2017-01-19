@@ -30,15 +30,6 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <style>
-        body {
-            /*background: url("http://mdbootstrap.com/images/regular/nature/img%20(55).jpg")no-repeat center center fixed;*/
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
-    </style>
 </head>
 <body class="fixed-sn red-skin" style="padding-top: 7%;">
 
@@ -171,8 +162,11 @@
                 <li class="nav-item ">
                     <a href="{{ url('/home') }}" class="nav-link"><i class="fa fa-home"></i> <span class="hidden-sm-down">Home</span></a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Account</span></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus-circle"></i>Penjualan</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item" href="{{ route('penjualan.index') }}">Form Jual</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a>
@@ -192,7 +186,6 @@
 
     </header>
     <!--/Double Navigation-->
-
 
         @include('layouts._flash')
         @yield('content')
@@ -214,6 +207,8 @@
     <script src="{{ asset('js/selectize.js') }}"></script>
 
     <script src="{{ asset('js/custom.js') }}"></script>
+    
+    <script src="{{ asset('js/penjualan.js') }}"></script>
 
     <script>
         // SideNav init
@@ -222,8 +217,50 @@
         // Custom scrollbar init
         var el = document.querySelector('.custom-scrollbar');
         Ps.initialize(el);
+
+
+        $("#id_barang").change(function(){
+
+            var barang = $('#id_barang').val();
+
+                   $.post('{{ url('/ajax') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    barang:barang },function(data){
+
+                          $('#pivot').val(data);
+                });
+
+                   $.post('{{ url('/ajax_nama') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    nama:barang },function(data){
+
+                          $('#pivot_nama').val(data);
+                });
+        }); 
+
+         // Material Select Initialization
+         $(document).ready(function() {
+            $('.mdb-select').material_select();
+          });
     </script>
-    
+    <script>
+        $(".btn-tambah").click(function(){
+
+            var barang = $('#id_barang').val();
+            var jumlah_jual = $('#jumlah_jual').val();
+            var faktur = $('#faktur').val();
+
+                   $.post('{{ url('/insert') }}',
+                {
+                    '_token': $('meta[name=csrf-token]').attr('content'),
+                    barang:barang,jumlah_jual:jumlah_jual,faktur:faktur },function(data){
+                          $('#nama').val(data);
+
+                });
+        }); 
+    </script>
         @yield('scripts')
 </body>
 </html>

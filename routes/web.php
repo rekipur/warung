@@ -21,12 +21,19 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/history-masuk', 'BarangController@history_masuk');
 
+Route::post('/ajax', 'BarangController@ajax');
+
+Route::post('/ajax_nama', 'BarangController@ajax_nama');
+
+Route::post('/insert', 'ChildjualController@store');
+
 Route::group(['middleware'=>'web'], function () {
 
 	Route::group(['middleware'=>['auth', 'role:admin']], function () {
 		Route::resource('kategori_barang', 'Kategori_barangController');
 		Route::resource('satuan_barang', 'SatuanController');
 		Route::resource('barang', 'BarangController');
+		Route::resource('penjualan', 'PenjualanController');
 	});
 
 });
